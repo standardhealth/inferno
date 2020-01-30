@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
+require_relative './data_absent_reason_checker'
+
 module Inferno
   module Sequence
     class USCore310PractitionerSequence < SequenceBase
+      include Inferno::DataAbsentReasonChecker
+
       title 'Practitioner Tests'
 
       description 'Verify that Practitioner resources on the FHIR server follow the US Core Implementation Guide'
@@ -63,7 +67,8 @@ module Inferno
         @practitioner_ary = practitioner_references.map do |reference|
           validate_read_reply(
             FHIR::Practitioner.new(id: reference.resource_id),
-            FHIR::Practitioner
+            FHIR::Practitioner,
+            check_for_data_absent_reasons
           )
         end
         @practitioner = @practitioner_ary.first
@@ -125,7 +130,7 @@ module Inferno
         @practitioner = reply.resource.entry
           .find { |entry| entry&.resource&.resourceType == 'Practitioner' }
           .resource
-        @practitioner_ary = fetch_all_bundled_resources(reply.resource)
+        @practitioner_ary = fetch_all_bundled_resources(reply, check_for_data_absent_reasons)
         save_resource_ids_in_bundle(versioned_resource_class('Practitioner'), reply)
         save_delayed_sequence_references(@practitioner_ary)
         validate_search_reply(versioned_resource_class('Practitioner'), reply, search_params)
@@ -214,7 +219,8 @@ module Inferno
         reply = get_resource_by_params(versioned_resource_class('Practitioner'), search_params)
         assert_response_ok(reply)
         assert_bundle_response(reply)
-        provenance_results += fetch_all_bundled_resources(reply.resource).select { |resource| resource.resourceType == 'Provenance' }
+        provenance_results += fetch_all_bundled_resources(reply, check_for_data_absent_reasons)
+          .select { |resource| resource.resourceType == 'Provenance' }
         provenance_results.each { |reference| @instance.save_resource_reference('Provenance', reference.id) }
 
         skip 'No Provenance resources were returned from this search' unless provenance_results.present?

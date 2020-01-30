@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
+require_relative './data_absent_reason_checker'
+
 module Inferno
   module Sequence
     class USCore310CareplanSequence < SequenceBase
+      include Inferno::DataAbsentReasonChecker
+
       title 'CarePlan Tests'
 
       description 'Verify that CarePlan resources on the FHIR server follow the US Core Implementation Guide'
@@ -104,7 +108,7 @@ module Inferno
             @care_plan = reply.resource.entry
               .find { |entry| entry&.resource&.resourceType == 'CarePlan' }
               .resource
-            @care_plan_ary[patient] += fetch_all_bundled_resources(reply.resource)
+            @care_plan_ary[patient] += fetch_all_bundled_resources(reply, check_for_data_absent_reasons)
 
             save_resource_ids_in_bundle(versioned_resource_class('CarePlan'), reply)
             save_delayed_sequence_references(@care_plan_ary[patient])
@@ -264,7 +268,7 @@ module Inferno
         skip_if_known_not_supported(:CarePlan, [:read])
         skip 'No CarePlan resources could be found for this patient. Please use patients with more information.' unless @resources_found
 
-        validate_read_reply(@care_plan, versioned_resource_class('CarePlan'))
+        validate_read_reply(@care_plan, versioned_resource_class('CarePlan'), check_for_data_absent_reasons)
       end
 
       test :vread_interaction do
@@ -333,7 +337,8 @@ module Inferno
           reply = get_resource_by_params(versioned_resource_class('CarePlan'), search_params)
           assert_response_ok(reply)
           assert_bundle_response(reply)
-          provenance_results += fetch_all_bundled_resources(reply.resource).select { |resource| resource.resourceType == 'Provenance' }
+          provenance_results += fetch_all_bundled_resources(reply, check_for_data_absent_reasons)
+            .select { |resource| resource.resourceType == 'Provenance' }
           provenance_results.each { |reference| @instance.save_resource_reference('Provenance', reference.id) }
         end
         skip "Could not resolve all parameters (#{could_not_resolve_all.join(', ')}) in any resource." unless resolved_one
