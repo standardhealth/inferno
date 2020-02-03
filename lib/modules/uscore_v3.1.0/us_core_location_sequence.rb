@@ -131,12 +131,14 @@ module Inferno
         reply = get_resource_by_params(versioned_resource_class('Location'), search_params)
         assert_response_ok(reply)
         assert_bundle_response(reply)
+
         @resources_found = reply&.resource&.entry&.any? { |entry| entry&.resource&.resourceType == 'Location' }
         skip 'No Location resources appear to be available.' unless @resources_found
         @location = reply.resource.entry
           .find { |entry| entry&.resource&.resourceType == 'Location' }
           .resource
         @location_ary = fetch_all_bundled_resources(reply.resource)
+
         save_resource_references(versioned_resource_class('Location'), @location_ary)
         save_delayed_sequence_references(@location_ary)
         validate_search_reply(versioned_resource_class('Location'), reply, search_params)

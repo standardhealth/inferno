@@ -120,12 +120,14 @@ module Inferno
         reply = get_resource_by_params(versioned_resource_class('Practitioner'), search_params)
         assert_response_ok(reply)
         assert_bundle_response(reply)
+
         @resources_found = reply&.resource&.entry&.any? { |entry| entry&.resource&.resourceType == 'Practitioner' }
         skip 'No Practitioner resources appear to be available.' unless @resources_found
         @practitioner = reply.resource.entry
           .find { |entry| entry&.resource&.resourceType == 'Practitioner' }
           .resource
         @practitioner_ary = fetch_all_bundled_resources(reply.resource)
+
         save_resource_references(versioned_resource_class('Practitioner'), @practitioner_ary)
         save_delayed_sequence_references(@practitioner_ary)
         validate_search_reply(versioned_resource_class('Practitioner'), reply, search_params)

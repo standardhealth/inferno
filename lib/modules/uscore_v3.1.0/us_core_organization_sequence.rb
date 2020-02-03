@@ -119,12 +119,14 @@ module Inferno
         reply = get_resource_by_params(versioned_resource_class('Organization'), search_params)
         assert_response_ok(reply)
         assert_bundle_response(reply)
+
         @resources_found = reply&.resource&.entry&.any? { |entry| entry&.resource&.resourceType == 'Organization' }
         skip 'No Organization resources appear to be available.' unless @resources_found
         @organization = reply.resource.entry
           .find { |entry| entry&.resource&.resourceType == 'Organization' }
           .resource
         @organization_ary = fetch_all_bundled_resources(reply.resource)
+
         save_resource_references(versioned_resource_class('Organization'), @organization_ary)
         save_delayed_sequence_references(@organization_ary)
         validate_search_reply(versioned_resource_class('Organization'), reply, search_params)
