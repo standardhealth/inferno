@@ -730,16 +730,16 @@ module Inferno
       end
 
       def get_first_search(search_parameters, sequence)
-        save_resource_ids_in_bundle_arguments = [
+        save_resource_references_arguments = [
           "versioned_resource_class('#{sequence[:resource]}')",
-          'reply',
+          "@#{sequence[:resource].underscore}_ary#{'[patient]' unless sequence[:delayed_sequence]}",
           validation_profile_uri(sequence)
         ].compact.join(', ')
 
         if fixed_value_search?(search_parameters, sequence)
-          get_first_search_with_fixed_values(sequence, search_parameters, save_resource_ids_in_bundle_arguments)
+          get_first_search_with_fixed_values(sequence, search_parameters, save_resource_references_arguments)
         else
-          get_first_search_by_patient(sequence, search_parameters, save_resource_ids_in_bundle_arguments)
+          get_first_search_by_patient(sequence, search_parameters, save_resource_references_arguments)
         end
       end
 
@@ -749,7 +749,7 @@ module Inferno
           !search_param_constants(search_parameters, sequence)
       end
 
-      def get_first_search_by_patient(sequence, search_parameters, save_resource_ids_in_bundle_arguments)
+      def get_first_search_by_patient(sequence, search_parameters, save_resource_references_arguments)
         if sequence[:delayed_sequence]
           %(
             #{get_search_params(search_parameters, sequence)}
@@ -762,7 +762,7 @@ module Inferno
               .find { |entry| entry&.resource&.resourceType == '#{sequence[:resource]}' }
               .resource
             @#{sequence[:resource].underscore}_ary = fetch_all_bundled_resources(reply.resource)
-            save_resource_ids_in_bundle(#{save_resource_ids_in_bundle_arguments})
+            save_resource_references(#{save_resource_references_arguments})
             save_delayed_sequence_references(@#{sequence[:resource].underscore}_ary)
             validate_search_reply(versioned_resource_class('#{sequence[:resource]}'), reply, search_params)
           )
@@ -785,7 +785,7 @@ module Inferno
                 .find { |entry| entry&.resource&.resourceType == '#{sequence[:resource]}' }
                 .resource
               @#{sequence[:resource].underscore}_ary[patient] = fetch_all_bundled_resources(reply.resource)
-              save_resource_ids_in_bundle(#{save_resource_ids_in_bundle_arguments})
+              save_resource_references(#{save_resource_references_arguments})
               save_delayed_sequence_references(@#{sequence[:resource].underscore}_ary[patient])
               validate_search_reply(versioned_resource_class('#{sequence[:resource]}'), reply, search_params)
             end
@@ -814,7 +814,7 @@ module Inferno
         }
       end
 
-      def get_first_search_with_fixed_values(sequence, search_parameters, save_resource_ids_in_bundle_arguments)
+      def get_first_search_with_fixed_values(sequence, search_parameters, save_resource_references_arguments)
         # assume only patient + one other parameter
         search_param = fixed_value_search_param(search_parameters, sequence)
         find_two_values = get_multiple_or_params(sequence).include? search_param[:name]
@@ -841,7 +841,7 @@ module Inferno
               @#{sequence[:resource].underscore}_ary[patient] += fetch_all_bundled_resources(reply.resource)
               #{'values_found += 1' if find_two_values}
 
-              save_resource_ids_in_bundle(#{save_resource_ids_in_bundle_arguments})
+              save_resource_references(#{save_resource_references_arguments})
               save_delayed_sequence_references(@#{sequence[:resource].underscore}_ary[patient])
               validate_search_reply(versioned_resource_class('#{sequence[:resource]}'), reply, search_params)
               #{'test_medication_inclusion(@medication_request_ary[patient], search_params)' if sequence[:resource] == 'MedicationRequest'}
