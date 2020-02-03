@@ -137,7 +137,7 @@ module Inferno
           .find { |entry| entry&.resource&.resourceType == 'Location' }
           .resource
         @location_ary = fetch_all_bundled_resources(reply.resource)
-        save_resource_ids_in_bundle(versioned_resource_class('Location'), reply)
+        save_resource_references(versioned_resource_class('Location'), @location_ary)
         save_delayed_sequence_references(@location_ary)
         validate_search_reply(versioned_resource_class('Location'), reply, search_params)
       end

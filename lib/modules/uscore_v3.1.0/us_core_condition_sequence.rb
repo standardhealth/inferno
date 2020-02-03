@@ -109,7 +109,7 @@ module Inferno
             .find { |entry| entry&.resource&.resourceType == 'Condition' }
             .resource
           @condition_ary[patient] = fetch_all_bundled_resources(reply.resource)
-          save_resource_ids_in_bundle(versioned_resource_class('Condition'), reply)
+          save_resource_references(versioned_resource_class('Condition'), @condition_ary[patient])
           save_delayed_sequence_references(@condition_ary[patient])
           validate_search_reply(versioned_resource_class('Condition'), reply, search_params)
         end

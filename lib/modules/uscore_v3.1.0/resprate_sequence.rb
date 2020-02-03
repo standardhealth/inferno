@@ -110,7 +110,7 @@ module Inferno
               .resource
             @observation_ary[patient] += fetch_all_bundled_resources(reply.resource)
 
-            save_resource_ids_in_bundle(versioned_resource_class('Observation'), reply, Inferno::ValidationUtil::US_CORE_R4_URIS[:resp_rate])
+            save_resource_references(versioned_resource_class('Observation'), @observation_ary[patient], Inferno::ValidationUtil::US_CORE_R4_URIS[:resp_rate])
             save_delayed_sequence_references(@observation_ary[patient])
             validate_search_reply(versioned_resource_class('Observation'), reply, search_params)
 

@@ -106,7 +106,7 @@ module Inferno
               .resource
             @care_plan_ary[patient] += fetch_all_bundled_resources(reply.resource)
 
-            save_resource_ids_in_bundle(versioned_resource_class('CarePlan'), reply)
+            save_resource_references(versioned_resource_class('CarePlan'), @care_plan_ary[patient])
             save_delayed_sequence_references(@care_plan_ary[patient])
             validate_search_reply(versioned_resource_class('CarePlan'), reply, search_params)
 

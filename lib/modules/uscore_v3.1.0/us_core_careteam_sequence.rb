@@ -99,7 +99,7 @@ module Inferno
             @care_team_ary[patient] += fetch_all_bundled_resources(reply.resource)
             values_found += 1
 
-            save_resource_ids_in_bundle(versioned_resource_class('CareTeam'), reply)
+            save_resource_references(versioned_resource_class('CareTeam'), @care_team_ary[patient])
             save_delayed_sequence_references(@care_team_ary[patient])
             validate_search_reply(versioned_resource_class('CareTeam'), reply, search_params)
 

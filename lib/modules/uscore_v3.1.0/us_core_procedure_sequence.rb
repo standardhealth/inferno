@@ -105,7 +105,7 @@ module Inferno
             .find { |entry| entry&.resource&.resourceType == 'Procedure' }
             .resource
           @procedure_ary[patient] = fetch_all_bundled_resources(reply.resource)
-          save_resource_ids_in_bundle(versioned_resource_class('Procedure'), reply)
+          save_resource_references(versioned_resource_class('Procedure'), @procedure_ary[patient])
           save_delayed_sequence_references(@procedure_ary[patient])
           validate_search_reply(versioned_resource_class('Procedure'), reply, search_params)
         end

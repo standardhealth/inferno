@@ -119,7 +119,7 @@ module Inferno
           .find { |entry| entry&.resource&.resourceType == 'PractitionerRole' }
           .resource
         @practitioner_role_ary = fetch_all_bundled_resources(reply.resource)
-        save_resource_ids_in_bundle(versioned_resource_class('PractitionerRole'), reply)
+        save_resource_references(versioned_resource_class('PractitionerRole'), @practitioner_role_ary)
         save_delayed_sequence_references(@practitioner_role_ary)
         validate_search_reply(versioned_resource_class('PractitionerRole'), reply, search_params)
       end

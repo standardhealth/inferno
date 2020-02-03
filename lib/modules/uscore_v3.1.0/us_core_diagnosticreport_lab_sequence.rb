@@ -110,7 +110,7 @@ module Inferno
               .resource
             @diagnostic_report_ary[patient] += fetch_all_bundled_resources(reply.resource)
 
-            save_resource_ids_in_bundle(versioned_resource_class('DiagnosticReport'), reply, Inferno::ValidationUtil::US_CORE_R4_URIS[:diagnostic_report_lab])
+            save_resource_references(versioned_resource_class('DiagnosticReport'), @diagnostic_report_ary[patient], Inferno::ValidationUtil::US_CORE_R4_URIS[:diagnostic_report_lab])
             save_delayed_sequence_references(@diagnostic_report_ary[patient])
             validate_search_reply(versioned_resource_class('DiagnosticReport'), reply, search_params)
 

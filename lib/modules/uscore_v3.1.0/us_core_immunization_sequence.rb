@@ -101,7 +101,7 @@ module Inferno
             .find { |entry| entry&.resource&.resourceType == 'Immunization' }
             .resource
           @immunization_ary[patient] = fetch_all_bundled_resources(reply.resource)
-          save_resource_ids_in_bundle(versioned_resource_class('Immunization'), reply)
+          save_resource_references(versioned_resource_class('Immunization'), @immunization_ary[patient])
           save_delayed_sequence_references(@immunization_ary[patient])
           validate_search_reply(versioned_resource_class('Immunization'), reply, search_params)
         end

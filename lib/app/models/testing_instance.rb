@@ -61,6 +61,9 @@ module Inferno
       property :patient_ids, String
       property :group_id, String
 
+      property :device_system, String
+      property :device_code, String
+
       # Bulk Data Parameters
       property :bulk_url, String
       property :bulk_token_endpoint, String
