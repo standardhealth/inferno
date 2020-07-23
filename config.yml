@@ -44,6 +44,7 @@ external_resource_validator_url: http://localhost:8081
 # module options: one or more must be set.  The first option in the list will be checked by default
 modules:
   - mcoderequirements_module
+  - mcodevalidation_module
 
 
 disable_bulk_data_require_access_token_test: false
@@ -98,6 +99,7 @@ presets:
   mcode_preset:
     name: LogicaHealth
     uri: https://api.logicahealth.org/infernofirsttest/open
+    module: mcodevalidation_module
     mcode_cancer_disease_status_id: 16754
     mcode_cancer_genetic_variant_id: 16802
     mcode_cancer_genomics_report_id: 16810

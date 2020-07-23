@@ -2,7 +2,7 @@
 
 module Inferno
   module Sequence
-    class MCODERequirementsMcodeCancerDiseaseStatusSequence < SequenceBase
+    class MCODEValidationMcodeCancerDiseaseStatusSequence < SequenceBase
       title 'Cancer Disease Status Tests'
 
       description 'Verify support for the server capabilities required by the Cancer Disease Status.'
@@ -10,28 +10,11 @@ module Inferno
       details %(
       )
 
+      binding.pry()
+
       test_id_prefix 'CDS'
       requires :mcode_cancer_disease_status_id
       conformance_supports :Observation
-
-      @resource_found = nil
-
-      test :resource_read do
-        metadata do
-          id '01'
-          name 'Server returns correct Observation resource from the Observation read interaction'
-          link 'http://hl7.org/fhir/us/mcode/index.html'
-          description %(
-            Tests whether the Observation with the provided id can be resolved and read.
-          )
-          versions :r4
-        end
-
-        resource_id = @instance.mcode_cancer_disease_status_id
-        read_response = validate_read_reply(FHIR::Observation.new(id: resource_id), FHIR::Observation)
-        @resource_found = read_response.resource
-        @raw_resource_found = read_response.response[:body]
-      end
 
       test :validate_resources do
         metadata do
@@ -44,7 +27,7 @@ module Inferno
           versions :r4
         end
 
-        skip 'No resource found from Read test' unless @resource_found.present?
+        # skip 'No resource found from Read test' unless @resource_found.present?
 
         resource_id = @instance.mcode_cancer_disease_status_id
 

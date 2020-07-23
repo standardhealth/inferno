@@ -30,6 +30,7 @@ module Inferno
           inferno_module = Inferno::Module.get(params[:module])
 
           if inferno_module.nil?
+            binding.pry()
             Inferno.logger.error "Unknown module: #{params[:module]}"
             halt 404, "Unknown module: #{params[:module]}"
           end
