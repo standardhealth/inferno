@@ -10,6 +10,7 @@ test_sets:
       - name: MCODE Profiles
         run_all: true
         sequences:
+        - CapabilityStatementSequence
         - MCODERequirementsMcodeCancerDiseaseStatusSequence
         - MCODERequirementsMcodeCancerGeneticVariantSequence
         - MCODERequirementsMcodeCancerGenomicsReportSequence

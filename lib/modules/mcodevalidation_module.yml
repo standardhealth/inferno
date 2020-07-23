@@ -1,0 +1,14 @@
+name: mcodevalidation_module
+title: mCODE mCODEValidation Module
+description : mCODE mCODEValidation Module
+fhir_version: r4
+default_test_set: ad_hoc_testing
+test_sets:
+  ad_hoc_testing:
+    view: default
+    tests:
+      - name: MCODE Profile Validation
+        run_all: true
+        sequences:
+        - validate
+
