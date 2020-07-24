@@ -97,9 +97,9 @@ bulk_data_jwks:
 # preset fhir servers: optional. Minimally requires name, uri, module, optional inferno_uri, client_id, client_secret, scopes, instructions link
 presets:
   mcode_preset:
-    name: LogicaHealth
+    name: mCODERequirementsLogicaHealth
     uri: https://api.logicahealth.org/infernofirsttest/open
-    module: mcodevalidation_module
+    module: mcoderequirementsßßß_module
     mcode_cancer_disease_status_id: 16754
     mcode_cancer_genetic_variant_id: 16802
     mcode_cancer_genomics_report_id: 16810
@@ -123,4 +123,8 @@ presets:
     mcode_tnm_pathological_regional_nodes_category_id: 16818
     mcode_tnm_pathological_stage_group_id: 16819
     mcode_tumor_marker_id: 16809
+  mcode_validation_preset:
+    name: mCODEValidationLogicaHealth
+    uri: https://api.logicahealth.org/infernofirsttest/open
+    module: mcodevalidation_module
     

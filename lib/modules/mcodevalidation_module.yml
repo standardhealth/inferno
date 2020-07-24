@@ -10,4 +10,5 @@ test_sets:
       - name: MCODE Profile Validation
         run_all: true
         sequences:
-        - MCODEValidationMcodeCancerDiseaseStatusSequence
+        - MCODEValidationCancerDiseaseStatusSequence
+        - MCODEValidationCancerPatientSequence

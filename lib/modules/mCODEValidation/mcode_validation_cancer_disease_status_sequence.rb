@@ -2,15 +2,13 @@
 
 module Inferno
   module Sequence
-    class MCODEValidationMcodeCancerDiseaseStatusSequence < SequenceBase
+    class MCODEValidationCancerDiseaseStatusSequence < SequenceBase
       title 'Cancer Disease Status Tests'
 
       description 'Verify support for the server capabilities required by the Cancer Disease Status.'
 
       details %(
       )
-
-      binding.pry()
 
       test_id_prefix 'CDS'
       requires :mcode_cancer_disease_status_id
@@ -19,10 +17,10 @@ module Inferno
       test :validate_resources do
         metadata do
           id '02'
-          name 'The Observation resource returned from the first Read test is valid according to the profile http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-disease-status.'
+          name 'The Observation resource JSON is valid according to the profile http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-disease-status.'
           link ''
           description %(
-
+            Validate the input Resource JSON.
           )
           versions :r4
         end
