@@ -27,11 +27,9 @@ module Inferno
           versions :r4
         end
 
-        # skip 'No resource found from Read test' unless @resource_found.present?
+        raw_resource = @instance.mcode_cancer_disease_status_id
 
-        resource_id = @instance.mcode_cancer_disease_status_id
-
-        test_resource_against_profile('Observation', resource_id, 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-disease-status')
+        test_resource_against_profile('Observation', raw_resource, 'http://hl7.org/fhir/us/mcode/StructureDefinition/mcode-cancer-disease-status')
       end
     end
   end
