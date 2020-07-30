@@ -13,5 +13,5 @@ tmp/*
 .vscode/*
 resources/terminology/*
 sequence_coverage.csv
-/fsh/build
+fsh/build
 !/fsh/build/input
