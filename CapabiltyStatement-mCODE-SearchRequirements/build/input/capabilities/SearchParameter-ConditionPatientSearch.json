@@ -1,0 +1,29 @@
+{
+  "resourceType": "SearchParameter",
+  "id": "ConditionPatientSearch",
+  "url": "http://hl7.org/fhir/mcode/SearchParameter/mcode-condition-patient",
+  "name": "mCODEConditionPatient",
+  "derivedFrom": "http://hl7.org/fhir/SearchParameter/clinical-patient",
+  "status": "draft",
+  "date": "2020-08-01",
+  "description": "This search parameter searches for Conditions with a given patient as its subject.",
+  "code": "patient",
+  "base": [
+    "Condition"
+  ],
+  "type": "reference",
+  "expression": "Condition.subject.where(resolve() is Patient)",
+  "xpath": "f:Condition/f:subject",
+  "xpathUsage": "normal",
+  "target": [
+    "Patient",
+    "Group"
+  ],
+  "multipleOr": true,
+  "multipleAnd": true,
+  "modifier": [
+    "missing",
+    "type",
+    "identifier"
+  ]
+}

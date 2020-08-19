@@ -1,0 +1,29 @@
+{
+  "resourceType": "SearchParameter",
+  "id": "PatientPatientSearch",
+  "url": "http://hl7.org/fhir/mcode/SearchParameter/mcode-patient-patient",
+  "name": "mCODEPatientPatient",
+  "derivedFrom": "http://hl7.org/fhir/SearchParameter/Patient-link",
+  "status": "draft",
+  "date": "2020-08-01",
+  "description": "This search parameter searches for Patients with a given patient as its link.",
+  "code": "patient",
+  "base": [
+    "Patient"
+  ],
+  "type": "reference",
+  "expression": "Patient.​link.​other",
+  "xpath": "f:Patient/f:link",
+  "xpathUsage": "normal",
+  "target": [
+    "Patient",
+    "Group"
+  ],
+  "multipleOr": true,
+  "multipleAnd": true,
+  "modifier": [
+    "missing",
+    "type",
+    "identifier"
+  ]
+}

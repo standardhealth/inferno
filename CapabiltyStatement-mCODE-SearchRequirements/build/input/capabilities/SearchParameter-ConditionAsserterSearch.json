@@ -1,0 +1,29 @@
+{
+  "resourceType": "SearchParameter",
+  "id": "ConditionAsserterSearch",
+  "url": "http://hl7.org/fhir/mcode/SearchParameter/mcode-condition-asserter",
+  "name": "mCODEConditionAsserter",
+  "derivedFrom": "http://hl7.org/fhir/SearchParameter/Condition-asserter",
+  "status": "draft",
+  "date": "2020-08-01",
+  "description": "This search parameter searches for Conditions with a given patient as its asserter.",
+  "code": "patient",
+  "base": [
+    "Condition"
+  ],
+  "type": "reference",
+  "expression": "Condition.asserter",
+  "xpath": "f:Condition/f:asserter",
+  "xpathUsage": "normal",
+  "target": [
+    "Patient",
+    "Group"
+  ],
+  "multipleOr": true,
+  "multipleAnd": true,
+  "modifier": [
+    "missing",
+    "type",
+    "identifier"
+  ]
+}
