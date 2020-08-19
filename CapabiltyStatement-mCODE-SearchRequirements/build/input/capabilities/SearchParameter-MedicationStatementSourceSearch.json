@@ -1,0 +1,29 @@
+{
+  "resourceType": "SearchParameter",
+  "id": "MedicationStatementSourceSearch",
+  "url": "http://hl7.org/fhir/mcode/SearchParameter/mcode-medicationstatement-source",
+  "name": "mCODEMedicationStatementSource",
+  "derivedFrom": "http://hl7.org/fhir/SearchParameter/MedicationStatement-source",
+  "status": "draft",
+  "date": "2020-08-01",
+  "description": "This search parameter searches for MedicationStatements with a given patient as its source.",
+  "code": "patient",
+  "base": [
+    "MedicationStatement"
+  ],
+  "type": "reference",
+  "expression": "MedicationStatement.​informationSource",
+  "xpath": "f:Observation/f:source",
+  "xpathUsage": "normal",
+  "target": [
+    "Patient",
+    "Group"
+  ],
+  "multipleOr": true,
+  "multipleAnd": true,
+  "modifier": [
+    "missing",
+    "type",
+    "identifier"
+  ]
+}
