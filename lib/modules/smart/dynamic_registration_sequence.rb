@@ -48,7 +48,9 @@ module Inferno
         skip_if_url_invalid @instance.oauth_register_endpoint, 'OAuth 2.0 Dynamic Registration Endpoint'
 
         assert_tls_1_2 @instance.oauth_register_endpoint
-        assert_deny_previous_tls @instance.oauth_register_endpoint
+        warning do
+          assert_deny_previous_tls @instance.oauth_register_endpoint
+        end
       end
 
       test 'Client registration endpoint accepts POST messages' do

@@ -123,8 +123,9 @@ module Inferno
 
             omit_if_tls_disabled
             assert_tls_1_2 @instance.oauth_authorize_endpoint
-
-            assert_deny_previous_tls @instance.oauth_authorize_endpoint
+            warning do
+              assert_deny_previous_tls @instance.oauth_authorize_endpoint
+            end
           end
         end
 
@@ -143,7 +144,9 @@ module Inferno
 
             omit_if_tls_disabled
             assert_tls_1_2 @instance.oauth_token_endpoint
-            assert_deny_previous_tls @instance.oauth_token_endpoint
+            warning do
+              assert_deny_previous_tls @instance.oauth_token_endpoint
+            end
           end
         end
 

@@ -106,13 +106,10 @@ module Inferno
   end
 end
 
-# Monkey patch common exceptions so that we don't get hard errors.
-# These are runtime issues on servers, not unhandled exceptions with Inferno
-[ClientException, SocketError, RestClient::Exceptions::OpenTimeout, RestClient::RequestTimeout, Errno::EADDRNOTAVAIL, Errno::ECONNRESET].each do |exception_type|
-  exception_type.class_eval do
-    def update_result(result)
-      result.fail!
-      result.message = message
-    end
+# monkey patch this exception from fhir_client
+class ClientException
+  def update_result(result)
+    result.fail!
+    result.message = message
   end
 end

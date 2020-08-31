@@ -5,10 +5,6 @@ module Inferno
     module TestSetEndpoints
       def self.included(klass)
         klass.class_eval do
-          before do
-            @missing_validators = Inferno::Terminology.missing_validators
-          end
-
           # Returns a specific testing instance test page
           get '/:id/test_sets/:test_set_id/?' do
             instance = Inferno::Models::TestingInstance.get(params[:id])
@@ -142,7 +138,7 @@ module Inferno
 
             test_group = nil
             test_group = test_set.test_case_by_id(submitted_test_cases.first).test_group
-            expanded_test_cases = []
+            failed_test_cases = []
             all_test_cases = []
 
             timer_count = 0
@@ -199,7 +195,7 @@ module Inferno
                 sequence_result.next_test_cases = ([next_test_case] + submitted_test_cases).join(',')
 
                 all_test_cases << test_case.id
-                expanded_test_cases << test_case.id if sequence_result.fail? || sequence_result.skip?
+                failed_test_cases << test_case.id if sequence_result.fail?
 
                 sequence_result.save!
                 if sequence_result.redirect_to_url
@@ -216,7 +212,7 @@ module Inferno
                 end
               end
 
-              query_target = expanded_test_cases.join(',')
+              query_target = failed_test_cases.join(',')
               query_target = all_test_cases.join(',') if all_test_cases.length == 1
 
               query_target = "#{test_group.id}/#{query_target}" unless test_group.nil?

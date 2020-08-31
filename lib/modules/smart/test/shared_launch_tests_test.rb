@@ -42,8 +42,6 @@ describe Inferno::Sequence::SharedLaunchTests do
       @instance.oauth_authorize_endpoint = auth_endpoint
 
       stub_request(:get, auth_endpoint)
-        .to_return(status: 200).then
-        .to_raise(StandardError)
 
       @sequence.run_test(@test)
     end
@@ -69,8 +67,6 @@ describe Inferno::Sequence::SharedLaunchTests do
       @instance.oauth_token_endpoint = token_endpoint
 
       stub_request(:get, token_endpoint)
-        .to_return(status: 200).then
-        .to_raise(StandardError)
 
       @sequence.run_test(@test)
     end

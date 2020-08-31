@@ -23,7 +23,9 @@ module Inferno
         request = req.request
         response = req.response
 
-        escaped_body = response[:body].dup # In case body is frozen from string literal
+        response_body = response[:body]
+        response_body = '' if response_body.nil?
+        escaped_body = response_body.dup
         unescape_unicode(escaped_body)
 
         new(
@@ -34,7 +36,7 @@ module Inferno
           request_payload: request[:payload],
           response_code: response[:code],
           response_headers: response[:headers].to_json,
-          response_body: escaped_body,
+          response_body: response[:body],
           instance_id: instance_id,
           timestamp: response[:timestamp]
         )
