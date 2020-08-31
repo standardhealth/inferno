@@ -1,0 +1,34 @@
+# frozen_string_literal: true
+
+module Inferno
+  module DemoProfileDefinitions
+    class DemoSecondarycancerconditionSequenceDefinition
+      SEARCH_PARAMETERS = [
+        {
+          url: 'http://hl7.org/fhir/us/mcode/SearchParameter/mcode-condition-patient',
+          code: 'patient',
+          expression: 'Condition.subject.where(resolve() is Patient)',
+          multipleOr: true,
+          multipleOrExpectation: '',
+          multipleAnd: true,
+          multipleAndExpectation: '',
+          modifiers: [
+            {
+              modifier: 'missing',
+              expectation: ''
+            },
+            {
+              modifier: 'type',
+              expectation: ''
+            },
+            {
+              modifier: 'identifier',
+              expectation: ''
+            }
+          ],
+          comparators: []
+        }
+      ].freeze
+    end
+  end
+end

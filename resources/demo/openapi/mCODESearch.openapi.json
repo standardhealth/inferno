@@ -1,0 +1,1223 @@
+﻿{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "CapabilityStatement[http://hl7.org/fhir/us/mcode/CapabilityStatement/mCODESearch]",
+    "license": {
+      "name": "Creative Commons Zero v1.0 Universal",
+      "url": "http://spdx.org/licenses/CC0-1.0.html"
+    },
+    "version": "1.0.1",
+    "contact": {
+      "name": "HL7 International Clinical Interoperability Council",
+      "email": "ciclist@lists.HL7.org",
+      "url": "http://www.hl7.org/Special/committees/cic"
+    }
+  },
+  "externalDocs": {
+    "url": "http://hl7.org/fhir/us/mcode/CapabilityStatement/mCODESearch",
+    "description": "FHIR CapabilityStatement"
+  },
+  "paths": {
+    "/metadata": {
+      "summary": "Access to the Server\u0027s Capability Statement",
+      "description": "All FHIR Servers return a CapabilityStatement that describes what services they perform",
+      "get": {
+        "summary": "Return the server\u0027s capability statement",
+        "operationId": "metadata",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the capbility statement",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/CapabilityStatement"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          }
+        ]
+      }
+    },
+    "/Observation": {
+      "summary": "manage the collection of resources of type Observation",
+      "description": "Access to services to manage the collection of all resources of type Observation",
+      "get": {
+        "summary": "Search all resources of type Observation based on a set of criteria",
+        "operationId": "searchObservation",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Bundle"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for observations with a given patient as its subject."
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for observations with a given patient as its subject."
+          },
+          {
+            "name": "performer",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for observations with a given patient as its performer."
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for observations with a given patient as its subject."
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for observations with a given patient as its subject."
+          },
+          {
+            "name": "performer",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for observations with a given patient as its performer."
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for observations with a given patient as its subject."
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for observations with a given patient as its subject."
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for observations with a given patient as its subject."
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for observations with a given patient as its subject."
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for observations with a given patient as its subject."
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for observations with a given patient as its subject."
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for observations with a given patient as its subject."
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for observations with a given patient as its subject."
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for observations with a given patient as its subject."
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for observations with a given patient as its subject."
+          }
+        ]
+      }
+    },
+    "/DiagnosticReport": {
+      "summary": "manage the collection of resources of type DiagnosticReport",
+      "description": "Access to services to manage the collection of all resources of type DiagnosticReport",
+      "get": {
+        "summary": "Search all resources of type DiagnosticReport based on a set of criteria",
+        "operationId": "searchDiagnosticReport",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Bundle"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for diagnostic reports with a given patient as its subject."
+          }
+        ]
+      }
+    },
+    "/Patient": {
+      "summary": "manage the collection of resources of type Patient",
+      "description": "Access to services to manage the collection of all resources of type Patient",
+      "get": {
+        "summary": "Search all resources of type Patient based on a set of criteria",
+        "operationId": "searchPatient",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Bundle"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          }
+        ]
+      }
+    },
+    "/MedicationStatement": {
+      "summary": "manage the collection of resources of type MedicationStatement",
+      "description": "Access to services to manage the collection of all resources of type MedicationStatement",
+      "get": {
+        "summary": "Search all resources of type MedicationStatement based on a set of criteria",
+        "operationId": "searchMedicationStatement",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Bundle"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          }
+        ]
+      }
+    },
+    "/Procedure": {
+      "summary": "manage the collection of resources of type Procedure",
+      "description": "Access to services to manage the collection of all resources of type Procedure",
+      "get": {
+        "summary": "Search all resources of type Procedure based on a set of criteria",
+        "operationId": "searchProcedure",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Bundle"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for Procedures with a given patient as its subject."
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for Procedures with a given patient as its subject."
+          }
+        ]
+      }
+    },
+    "/Procedure/{rid}": {
+      "summary": "Read/Write/etc resource instance of type Procedure",
+      "description": "Access to services to manage the state of a single resource of type Procedure",
+      "get": {
+        "summary": "Read the current state of the resource",
+        "operationId": "readProcedure",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned",
+            "headers": {
+              "ETag": {
+                "description": "Version from Resource.meta.version as a weak ETag",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Procedure"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          }
+        ]
+      }
+    },
+    "/Condition": {
+      "summary": "manage the collection of resources of type Condition",
+      "description": "Access to services to manage the collection of all resources of type Condition",
+      "get": {
+        "summary": "Search all resources of type Condition based on a set of criteria",
+        "operationId": "searchCondition",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Bundle"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for Conditions with a given patient as its subject."
+          },
+          {
+            "name": "asserter",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for Conditions with a given patient as its asserter."
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for Conditions with a given patient as its subject."
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "name": "patient",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "description": "This search parameter searches for Conditions with a given patient as its subject."
+          }
+        ]
+      }
+    },
+    "/Condition/{rid}": {
+      "summary": "Read/Write/etc resource instance of type Condition",
+      "description": "Access to services to manage the state of a single resource of type Condition",
+      "get": {
+        "summary": "Read the current state of the resource",
+        "operationId": "readCondition",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned",
+            "headers": {
+              "ETag": {
+                "description": "Version from Resource.meta.version as a weak ETag",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Condition"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          }
+        ]
+      }
+    },
+    "/Observation/{rid}": {
+      "summary": "Read/Write/etc resource instance of type Observation",
+      "description": "Access to services to manage the state of a single resource of type Observation",
+      "get": {
+        "summary": "Read the current state of the resource",
+        "operationId": "readObservation",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned",
+            "headers": {
+              "ETag": {
+                "description": "Version from Resource.meta.version as a weak ETag",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Observation"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          },
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          }
+        ]
+      }
+    },
+    "/Specimen/{rid}": {
+      "summary": "Read/Write/etc resource instance of type Specimen",
+      "description": "Access to services to manage the state of a single resource of type Specimen",
+      "get": {
+        "summary": "Read the current state of the resource",
+        "operationId": "readSpecimen",
+        "responses": {
+          "default": {
+            "description": "Error, with details",
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/OperationOutcome"
+                }
+              }
+            }
+          },
+          "200": {
+            "description": "the resource being returned",
+            "headers": {
+              "ETag": {
+                "description": "Version from Resource.meta.version as a weak ETag",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            },
+            "content": {
+              "application/fhir+json": {
+                "schema": {
+                  "$ref": "https://hl7.org/fhir/R4/fhir.schema.json#/definitions/Specimen"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/rid"
+          },
+          {
+            "$ref": "#/components/parameters/summary"
+          },
+          {
+            "$ref": "#/components/parameters/format"
+          },
+          {
+            "$ref": "#/components/parameters/pretty"
+          },
+          {
+            "$ref": "#/components/parameters/elements"
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "rid": {
+        "name": "rid",
+        "in": "path",
+        "description": "id of the resource (\u003dResource.id)",
+        "required": true,
+        "allowEmptyValue": false,
+        "style": "simple",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "hid": {
+        "name": "hid",
+        "in": "path",
+        "description": "id of the history entry (\u003dResource.meta.versionId)",
+        "required": true,
+        "allowEmptyValue": false,
+        "style": "simple",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "summary": {
+        "name": "_summary",
+        "in": "query",
+        "description": "Requests the server to return a designated subset of the resource",
+        "allowEmptyValue": true,
+        "style": "form",
+        "schema": {
+          "type": "string",
+          "enum": [
+            "true",
+            "text",
+            "data",
+            "count",
+            "false"
+          ]
+        }
+      },
+      "format": {
+        "name": "_format",
+        "in": "query",
+        "description": "Specify alternative response formats by their MIME-types (when a client is unable acccess accept: header)",
+        "allowEmptyValue": true,
+        "style": "form",
+        "schema": {
+          "type": "string",
+          "format": "mime-type"
+        }
+      },
+      "pretty": {
+        "name": "_pretty",
+        "in": "query",
+        "description": "Ask for a pretty printed response for human convenience",
+        "allowEmptyValue": true,
+        "style": "form",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "elements": {
+        "name": "_elements",
+        "in": "query",
+        "description": "Requests the server to return a collection of elements from the resource",
+        "allowEmptyValue": true,
+        "style": "form",
+        "explode": false,
+        "schema": {
+          "type": "array",
+          "format": "string",
+          "items": {
+            "format": "string"
+          }
+        }
+      },
+      "count": {
+        "name": "_count",
+        "in": "query",
+        "description": "The maximum number of search results on a page. The server is not bound to return the number requested, but cannot return more",
+        "schema": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

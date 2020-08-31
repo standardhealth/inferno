@@ -1,0 +1,53 @@
+name: demo
+title: demo
+resource_path: demo
+description : 
+fhir_version: r4
+default_test_set: ad_hoc_testing
+test_sets:
+  ad_hoc_testing:
+    view: default
+    tests:
+      - name: demo Profiles
+        run_all: true
+        sequences:
+        - DemoKarnofskyperformancestatusSequence
+        - DemoTnmclinicalregionalnodescategorySequence
+        - DemoCancerrelatedradiationprocedureSequence
+        - DemoTnmpathologicalregionalnodescategorySequence
+        - DemoTnmclinicalstagegroupSequence
+        - DemoCancerstageparentSequence
+        - DemoCancerrelatedsurgicalprocedureSequence
+        - DemoComorbidconditionSequence
+        - DemoGenomicregionstudiedSequence
+        - DemoTnmpathologicaldistantmetastasescategorySequence
+        - DemoTnmclinicalprimarytumorcategorySequence
+        - DemoTnmclinicaldistantmetastasescategorySequence
+        - DemoGeneticspecimenSequence
+        - DemoCancerdiseasestatusSequence
+        - DemoCancerrelatedmedicationstatementSequence
+        - DemoPrimarycancerconditionSequence
+        - DemoSecondarycancerconditionSequence
+        - DemoCancerconditionparentSequence
+        - DemoEcogperformancestatusSequence
+        - DemoTnmpathologicalprimarytumorcategorySequence
+        - DemoTnmpathologicalstagegroupSequence
+        - DemoCancergenomicsreportSequence
+        - DemoCancerpatientSequence
+        - DemoTumormarkerSequence
+        - DemoCancergeneticvariantSequence
+sequence_requirements:
+  observation_id:
+    label: observation_id
+  procedure_id:
+    label: procedure_id
+  condition_id:
+    label: condition_id
+  specimen_id:
+    label: specimen_id
+  medication_statement_id:
+    label: medication_statement_id
+  diagnostic_report_id:
+    label: diagnostic_report_id
+  patient_id:
+    label: patient_id
