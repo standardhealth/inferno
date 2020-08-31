@@ -16,7 +16,7 @@ resource_validator: external
 external_resource_validator_url: http://validator_service:4567
 modules:
 - smart
-- demo_module
+- demo
 presets:
   site_healthit_gov:
     name: SITE DSTU2 FHIR Sandbox
